@@ -15,7 +15,7 @@ app.get("/eventos", (req, res) => {
         const { dataEventos } = req.query;
 
         if(dataEventos){
-            eventos = eventos.filter(evento=>evento.data == dataEventos);
+            eventos = eventos.filter(evento=>evento.data >= dataEventos);
         };
 
         res.status(200).json(eventos); 
