@@ -7,7 +7,7 @@ const fs = require("fs");
 app.get("/usuario", (req, res) => {
     try {
         // Lendo o arquivo JSON
-        const data = fs.readlinkSync("./usuarios.json", "utf-8");
+        const data = fs.readFileSync("./usuarios.json", "utf-8");
 
         // Transfor o arquivo JSON  em objeto JS
         let usuario = JSON.parse(data);
