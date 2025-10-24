@@ -4,18 +4,21 @@ const PORT = 8081;
 
 const fs = require("fs");
 
-app.get("/usuario", (req, res) => {
+app.get("/eventos", (req, res) => {
     try {
         // Lendo o arquivo JSON
-        const data = fs.readlinkSync("./usuarios.json", "utf-8");
+        const data = fs.readFileSync("./eventos.json", "utf-8");
 
         // Transfor o arquivo JSON  em objeto JS
-        let usuario = JSON.parse(data);
+        let eventos = JSON.parse(data);
 
-        const { nomeUsuarios } = req.query;
+        const { dataEventos } = req.query;
 
+        if(dataEventos){
+            eventos = eventos.filter(evento=>evento.data == dataEventos);
+        };
 
-        res.status(200).json(usuario); 
+        res.status(200).json(eventos); 
     } catch (error) {
         console.error("erro ao ler o arquivo JSON:", error);
         res.status(500).json({ error: "erro interno no servidor ao processar os usuarios!" })
