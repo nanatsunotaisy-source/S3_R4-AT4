@@ -14,13 +14,8 @@ app.get("/usuario", (req, res) => {
 
         const { nomeUsuarios } = req.query;
 
-        if (nomeUsuarios) {
-            usuarios = usuarios.filter(usuario => usuario.nome.
-                toLowerCase()
-                .includes(nomeUsuarios.toLowerCase()));
-        }
 
-        res.status(200).json(usuario);
+        res.status(200).json(usuario); 
     } catch (error) {
         console.error("erro ao ler o arquivo JSON:", error);
         res.status(500).json({ error: "erro interno no servidor ao processar os usuarios!" })
